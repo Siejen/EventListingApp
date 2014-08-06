@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Community Board for Event Listings</title>
+	</head>
+	<body>
+		<h1>User Profile Page</h1>
+		<table>
+				<tr>
+					<td><h2>Hello <%= user.dataValues.firstname %>!</h2></td>
+				</tr>
+				<tr>
+					<td><img src="<%= imgurl %>"></td>
+				</tr>
+				<tr>
+					<td>Info about Your Profile</td>
+				</tr>				
+				<tr>
+					<td>E-mail: <%= user.dataValues.email %></td>
+				</tr>
+				<tr>
+					<td>Organization: <%= user.dataValues.organizationName %></td>
+				</tr>
+				<tr>
+					<td>Org URL: <%= user.dataValues.organizationURL %></td>
+				</tr>
+				<tr><td></td></tr>
+				<tr><td></td></tr>
+				<tr><td></td></tr>				
+			<form method="POST" action="/addevent">
+				<tr>
+					<td>Event Name:</td>
+					<td><input type="text" name="eventName" placeholder="Enter Event Name (Hackathon for Beginners)"></td>
+				</tr>
+				<tr>
+					<td>Event Location:</td>
+					<td><input type="text" name="eventLocation" placeholder="Enter Name of Event Location (General Assembly)"></td>
+				</tr>
+				<tr>
+					<td>Event City & State:</td>
+					<td><input type="text" name="eventCityAndState" placeholder="Enter City & State (San Francisco, CA)"></td>
+				</tr>
+				<tr>
+					<td>Event Date:</td>
+					<td><input type="text" name="eventDate" placeholder="Enter Date (2014-08-31)"></td>
+				</tr>
+				<tr>
+					<td>Event Time:</td>
+					<td><input type="text" name="eventTime" placeholder="Enter Time (13:00)"></td>
+				</tr>
+				<tr>
+					<td>Event Cost:</td>
+					<td><input type="text" name="eventCost" placeholder="Enter Amount ($25.00)"></td>
+				</tr>
+				<tr>
+					<td>To Register or Event URL:</td>
+					<td><input type="text" name="eventURL" placeholder="Enter Event URL"></td>
+				</tr>				
+				<tr>
+					<td></td>
+					<td><input type="submit" name="submit" value="Add Event to the List"></td>
+				</tr>
+			</form>
+		</table>
+	</body>
+</html>
