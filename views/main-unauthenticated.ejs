@@ -7,6 +7,20 @@
 		<h1>List Your Event Here</h1>
 		<h3>Signup</h3>
 		<h3>Logon</h3>
-		<h3>Upcoming Events</h3>		
+		<h3>Upcoming Events:</h3>
+		<table>
+
+				<% posts.forEach( function ( post ) { %>
+					<tr>
+						<td> <%= post.dataValues.eventName %> </td><td></td><td></td>
+						<td> <%= post.dataValues.eventLocation %> </td><td></td><td></td>
+						<td> <%= post.dataValues.eventCityAndState %> </td><td></td><td></td>
+						<td> <%= post.dataValues.eventDate %> </td><td></td><td></td>
+						<td> <%= post.dataValues.eventTime %> </td><td></td><td></td>
+						<td> <%= post.dataValues.eventCost %> </td><td></td><td></td>
+						<td> <%= post.dataValues.eventURL %> </td><td></td><td></td>	
+					</tr>
+				<% }) %>
+		</table>
 	</body>
 </html>

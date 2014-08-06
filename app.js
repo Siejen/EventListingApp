@@ -42,7 +42,12 @@ app.use(function(req, res, next){
 });
 
 app.get('/', function(req, res){
-	res.render('main-unauthenticated');
+	db.post.findAll().complete(function(err, posts) {
+		var info = {
+			posts: posts
+		};
+		res.render('main-unauthenticated', info);
+	});
 });
 
 app.get('/signup', function(req, res){
@@ -74,7 +79,11 @@ app.get('/profile', function(req, res){
 			var hash = md5(lctEmail);
 			var URL = "http://www.gravatar.com/avatar/" + hash + "?s=150";
 			console.log(URL);
-			var info = { user: user, posts: posts, imgurl: URL};
+			var info = { 
+				user: user, 
+				posts: posts, 
+				imgurl: URL
+			};
 			res.render('user-profile', info);
 		});
 	});
