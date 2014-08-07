@@ -5,11 +5,14 @@
 	</head>
 	<body>
 		<h1>List Your Event Here</h1>
-		<h3>Signup</h3>
-		<h3>Logon</h3>
+			<form method="GET" action="/signup">
+				<button>Signup</button><br/>
+			</form>
+			<form method="GET" action="/logon">
+				<button>Logon</button><br/>
+			</form>
 		<h3>Upcoming Events:</h3>
 		<table>
-
 				<% posts.forEach( function ( post ) { %>
 					<tr>
 						<td> <a href="<%= post.dataValues.eventURL %>"><%= post.dataValues.eventName %></a> </td><td></td><td></td>	

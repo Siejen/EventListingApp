@@ -42,7 +42,13 @@ app.use(function(req, res, next){
 });
 
 app.get('/', function(req, res){
-	db.post.findAll().complete(function(err, posts) {
+	// find all the posts in the database
+	// in the future, when that is complete, invoke the callback function
+	// pass 2 parameters to or through the callback function: err and posts
+	// err would indicate an error had occured
+	// posts is an array of individual posts each of which represents a row in the posts table
+	db.post.findAll()					// run a query   // .findAll will always return an array   //  .find would return an object
+	.complete(function(err, posts) {	// when the query completes, invoke the callback function using the data returned from the query and being passed as an array in posts
 		var info = {
 			posts: posts
 		};
@@ -57,6 +63,17 @@ app.get('/signup', function(req, res){
 
 app.post('/signup', function(req, res){
 	console.log( req.body );
+	var postInfo = {
+		// keys: model.js
+		// values: from the form (req.body.name-of-field)
+		organizationName: req.body.organizationName,
+		username: req.body.username,
+		passwordHash: req.body.passwordHash,
+		organizationURL: req.body.organizationURL,
+		firstname: req.body.firstname,
+		lastname: req.body.lastname,
+		email: req.body.email
+	};
 	db.user.create(req.body);
 	res.redirect('logon');
 });
