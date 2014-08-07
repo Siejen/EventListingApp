@@ -5,30 +5,24 @@
 	</head>
 	<body>
 		<h3>Upcoming Events:</h3>
+		<%- include eventtable.ejs %>		
 		<table>
-				<% posts.forEach( function ( post ) { %>
-					<tr>
-						<td> <a href="<%= post.dataValues.eventURL %>"><%= post.dataValues.eventName %></a> </td><td></td><td></td>	
-						<td> <%= post.dataValues.eventLocation %> </td><td></td><td></td>
-						<td> <%= post.dataValues.eventCityAndState %> </td><td></td><td></td>
-						<td> <%= post.dataValues.eventDate %> </td><td></td><td></td>
-						<td> <%= post.dataValues.eventTime %> </td><td></td><td></td>
-						<td> <%= post.dataValues.eventCost %> </td><td></td><td></td>
-					</tr>
-				<% }) %>
 				<br/>
-				<br/>
-				<h3>Click here to list an event</h3>
-				<form method="GET" action="/profile">
-					<button>Add an Event</button><br/>
-				</form>
-				<br/>
-				<br/>				
-				<form method="GET" action="/logout">
-					<tr>
-						<button>Logout</button>
-					</tr>
-				</form>
+				<tr>
+
+				</tr>
+				<tr>
+					<form method="GET" action="/profile">
+						<td><label>Click here to list an event: </label></td>
+						<td><button>Add an Event</button><br/></td>
+					</form>
+				</tr>
+				<tr>
+					<form method="GET" action="/logout">
+						<td><label>Click here to logout: </label></td>
+						<td><button>Logout</button></td>
+					</form>
+				</tr>
 		</table>
 	</body>
 </html>
