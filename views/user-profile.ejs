@@ -6,6 +6,20 @@
 	<body>
 		<h1>User Profile Page</h1>
 		<table>
+			<form method="GET" action="/">
+				<tr>
+					<button>Home</button>
+				</tr>
+			</form>
+				</tr>				
+			<form method="GET" action="/logout">
+				<tr>
+					<button>Logout</button>
+				</tr>
+			</form>
+		</table>	
+
+		<table>
 				<tr>
 					<td><h2>Hello <%= user.dataValues.firstname %>!</h2></td>
 				</tr>

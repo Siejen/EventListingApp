@@ -131,8 +131,14 @@ app.post('/signup', function(req, res){
 		lastname: req.body.lastname,
 		email: req.body.email
 	};
-	db.user.create(postInfo);
-	res.redirect('/logon');
+	// db.user.create(postInfo);
+	// res.redirect('/logon');
+	db.user.create(postInfo)
+	.complete(function(err, user) {
+		req.login(user, function(err){
+			res.redirect('/profile');
+		});
+	});
 });
 
 app.get('/logon', function(req, res){
