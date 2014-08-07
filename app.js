@@ -97,7 +97,7 @@ app.get('/', function(req, res){
 	// pass 2 parameters to or through the callback function: err and posts
 	// err would indicate an error had occured
 	// posts is an array of individual posts each of which represents a row in the posts table
-	db.post.findAll()					// run a query   // .findAll will always return an array   //  .find would return an object
+	db.post.findAll( { include: [db.user]} )		// run a query   // .findAll will always return an array   //  .find would return an object
 	.complete(function(err, posts) {	// when the query completes, invoke the callback function using the data returned from the query and being passed as an array in posts
 		var info = {
 			posts: posts
