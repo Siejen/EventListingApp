@@ -102,7 +102,12 @@ app.get('/', function(req, res){
 		var info = {
 			posts: posts
 		};
-		res.render('main-unauthenticated', info);
+		if (req.isAuthenticated()) {
+			res.render('main-authenticated', info);			
+		}
+		else {
+			res.render('main-unauthenticated', info);			
+		}
 	});
 });
 
@@ -142,22 +147,27 @@ app.post('/logon', passport.authenticate('user-local', {
 }));
 
 app.get('/profile', function(req, res){
-	db.user.find({ where: {id: req.user.id}}).complete(function(err, user) {
-		db.post.findAll().complete(function(err, posts) {
-			var email = req.user.email;
-			var trimmedEmail = email.trim();
-			var lctEmail = trimmedEmail.toLowerCase();
-			var hash = md5(lctEmail);
-			var URL = "http://www.gravatar.com/avatar/" + hash + "?s=150";
-			console.log(URL);
-			var info = { 
-				user: user, 
-				posts: posts, 
-				imgurl: URL
-			};
-			res.render('user-profile', info);
+	if (req.isAuthenticated()) {
+		db.user.find({ where: {id: req.user.id}}).complete(function(err, user) {
+			db.post.findAll().complete(function(err, posts) {
+				var email = req.user.email;
+				var trimmedEmail = email.trim();
+				var lctEmail = trimmedEmail.toLowerCase();
+				var hash = md5(lctEmail);
+				var URL = "http://www.gravatar.com/avatar/" + hash + "?s=150";
+				console.log(URL);
+				var info = { 
+					user: user, 
+					posts: posts, 
+					imgurl: URL
+				};
+				res.render('user-profile', info);
+			});
 		});
-	});
+	}
+	else {
+		res.redirect('/');
+	} 
 });
 
 app.post('/addevent', function(req, res){
@@ -177,6 +187,11 @@ app.post('/addevent', function(req, res){
 		// req.user.addPost(post);
 		res.redirect('/');
 	});
+});
+
+app.get('/logout', function(req, res){
+  req.logout();
+  res.redirect('/');
 });
 
 app.get('*', function(req,res){
