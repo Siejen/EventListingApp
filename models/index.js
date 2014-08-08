@@ -23,6 +23,8 @@ Object.keys(db).forEach(function(modelName) {
   }
 });
 
+// sets up sequelize and gathers all the model files and moves it into the "db" object
+// relations between the rows and tables
 db.post.belongsTo(db.user, { foreignKey: 'userId' });
 db.user.hasMany(db.post);
 

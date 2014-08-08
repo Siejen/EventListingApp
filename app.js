@@ -1,3 +1,5 @@
+// app.js defines the server logic - how the server responds to the requests
+
 // 1. Start with a basic simple app.js template
 // 2. Setup localhost:3000
 // 3. Run nodemon to ensure that the app loads on localhost
@@ -52,7 +54,9 @@ passport.use('user-local', new LocalStrategy({
 		console.log( '... username: ' + username );
 		console.log( '... password: ' + password );
 
-		db.user.find({ where: { username: username }})			// 1st username is the key coming from the model file & the 2nd username is value coming from the form
+		db.user.find({ where: { username: username }})			
+		// 1st username is the key coming from the model file
+		// 2nd username is value coming from the form
 		.done(function(error,user) {
 			if(error){
 				console.log(error);
@@ -100,6 +104,7 @@ app.get('/', function(req, res){
 	db.post.findAll( { include: [db.user]} )		// run a query   // .findAll will always return an array   //  .find would return an object
 	.complete(function(err, posts) {	// when the query completes, invoke the callback function using the data returned from the query and being passed as an array in posts
 		var info = {
+			// 1st posts is key and hoe that template talks to that value, and the 2nd posts is the parameter passed through 
 			posts: posts
 		};
 		if (req.isAuthenticated()) {
