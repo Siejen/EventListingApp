@@ -2,25 +2,33 @@
 <html>
 	<head>
 		<title>Community Board for Event Listings</title>
+		<link href="bootstrap.css" rel="stylesheet">	
+		<link href="custom.css" rel="stylesheet">				
 	</head>
 	<body>
-		<h1>User Profile Page</h1>
+		<div class="container">
+		<div class="col-md-12">
+			<h1>Community Board for Event Listings | User Profile Page</h1>
+		</div>
+		<div class="col-md-12">
 		<table>
 			<form method="GET" action="/">
 				<tr>
 					<button>Home</button>
 				</tr>
 			</form>
+				<td></td>
 				</tr>				
 			<form method="GET" action="/logout">
 				<tr>
 					<button>Logout</button>
 				</tr>
 			</form>
-		</table>	
-
+		</table>
+		</div>
+		<div class="col-md-4">	
 		<table>
-				<tr>
+					<tr>
 					<td><h2>Hello <%= user.dataValues.firstname %>!</h2></td>
 				</tr>
 				<tr>
@@ -38,37 +46,39 @@
 				<tr>
 					<td>Org URL: <%= user.dataValues.organizationURL %></td>
 				</tr>
-				<tr><td></td></tr>
-				<tr><td></td></tr>
-				<tr><td></td></tr>				
+		</table>
+		</div>
+		<div class="col-md-8">
+		<table>
 			<form method="POST" action="/addevent">
+				<tr><h2>Share an Event with the Community</h2></tr>
 				<tr>
 					<td>Event Name:</td>
-					<td><input type="text" name="eventName" placeholder="Enter Event Name (Hackathon for Beginners)"></td>
+					<td><input type="text" name="eventName" placeholder="Enter Event Name (Hackathon for Beginners)" size="50"></td>
 				</tr>
 				<tr>
 					<td>Event Location:</td>
-					<td><input type="text" name="eventLocation" placeholder="Enter Name of Event Location (General Assembly)"></td>
+					<td><input type="text" name="eventLocation" placeholder="Enter Name of Event Location (General Assembly)" size="50"></td>
 				</tr>
 				<tr>
 					<td>Event City & State:</td>
-					<td><input type="text" name="eventCityAndState" placeholder="Enter City & State (San Francisco, CA)"></td>
+					<td><input type="text" name="eventCityAndState" placeholder="Enter City & State (San Francisco, CA)" size="50"></td>
 				</tr>
 				<tr>
 					<td>Event Date:</td>
-					<td><input type="text" name="eventDate" placeholder="Enter Date (2014-08-31)"></td>
+					<td><input type="text" name="eventDate" placeholder="Enter Date (2014-08-31)" size="50"></td>
 				</tr>
 				<tr>
 					<td>Event Time:</td>
-					<td><input type="text" name="eventTime" placeholder="Enter Time (13:00)"></td>
+					<td><input type="text" name="eventTime" placeholder="Enter Time (13:00)" size="50"></td>
 				</tr>
 				<tr>
 					<td>Event Cost:</td>
-					<td><input type="text" name="eventCost" placeholder="Enter Amount ($25.00)"></td>
+					<td><input type="text" name="eventCost" placeholder="Enter Amount ($25.00)" size="50"></td>
 				</tr>
 				<tr>
 					<td>To Register or Event URL:</td>
-					<td><input type="text" name="eventURL" placeholder="Enter Event URL"></td>
+					<td><input type="text" name="eventURL" placeholder="Enter Event URL" size="50"></td>
 				</tr>				
 				<tr>
 					<td></td>
@@ -76,5 +86,14 @@
 				</tr>
 			</form>
 		</table>
+		</div>
+
+		</div>
+
+		<div class="footer">
+		<div class="container">
+		    <p class="text-muted">@2014 The Hamster Coding Club</p>
+		</div>
+		</div>
 	</body>
 </html>

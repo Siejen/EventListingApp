@@ -1,13 +1,13 @@
 <table>
 		<% posts.forEach( function ( post ) { %>
 			<tr>
-				<td> <a href="<%= post.dataValues.eventURL %>"><%= post.dataValues.eventName %></a> </td><td></td><td></td>	
-				<td> <%= post.dataValues.eventLocation %> </td><td></td><td></td>
-				<td> <%= post.dataValues.eventCityAndState %> </td><td></td><td></td>
-				<td> <%= post.dataValues.eventDate %> </td><td></td><td></td>
-				<td> <%= post.dataValues.eventTime %> </td><td></td><td></td>
-				<td> <%= post.dataValues.eventCost %> </td><td></td><td></td>
-				<td> <%= post.dataValues.user.firstname %> </td><td></td><td></td>
+				<td> <a href="<%= post.dataValues.eventURL %>"><%= post.dataValues.eventName %></a></td>	
+				<td> <%= post.dataValues.eventLocation %> </td>
+				<td> <%= post.dataValues.eventCityAndState %> </td>
+				<td> <%= post.dataValues.eventDate %> </td>
+				<td> <%= post.dataValues.eventTime %> </td>
+				<td> <%= post.dataValues.eventCost %> </td>
+				<td> <%= post.dataValues.user.firstname %> </td>
 			</tr>
 		<% }) %>
 </table>

@@ -120,7 +120,7 @@ app.post('/signup', function(req, res){
 	console.log( req.body );
 	var salt = bcrypt.genSaltSync(10);
 	var hash = bcrypt.hashSync(req.body.password, salt);	// salting the password, hashing the "password" (user inputted into the form during signup process) and storing it in the variable hash
-	var postInfo = {
+	var newUserInfo = {
 		// keys: model.js
 		// values: from the form (req.body.name-of-field)
 		organizationName: req.body.organizationName,
@@ -129,11 +129,12 @@ app.post('/signup', function(req, res){
 		organizationURL: req.body.organizationURL,
 		firstname: req.body.firstname,
 		lastname: req.body.lastname,
-		email: req.body.email
+		email: req.body.email,
+		//userId: 1
 	};
 	// db.user.create(postInfo);
 	// res.redirect('/logon');
-	db.user.create(postInfo)
+	db.user.create(newUserInfo)
 	.complete(function(err, user) {
 		req.login(user, function(err){
 			res.redirect('/profile');
@@ -186,7 +187,7 @@ app.post('/addevent', function(req, res){
 		eventTime: req.body.eventTime,
 		eventCost: req.body.eventCost,
 		eventURL: req.body.eventURL,
-		userId: 1
+		userId: req.user.id
 	};
 	db.post.create( postInfo )
 	.success(function(post){
@@ -200,11 +201,11 @@ app.get('/logout', function(req, res){
   res.redirect('/');
 });
 
-app.get('*', function(req,res){
-  res.status(404);
-  res.render('404');
-});
+// app.get('*', function(req,res){
+//   res.status(404);
+//   res.render('404');
+// });
 
-app.listen(3000, function(){
+app.listen(process.env.PORT || 3000, function(){
   console.log("LISTENING ON PORT 3000");
 });
