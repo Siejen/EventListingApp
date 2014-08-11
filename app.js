@@ -164,7 +164,8 @@ app.get('/profile', function(req, res){
 			db.post.findAll().complete(function(err, posts) {
 				var email = req.user.email;
 				var trimmedEmail = email.trim();
-				var lctEmail = trimmedEmail.toLowerCase();
+				var lctEmail = trimmedE
+				mail.toLowerCase();
 				var hash = md5(lctEmail);
 				var URL = "http://www.gravatar.com/avatar/" + hash + "?s=150";
 				console.log(URL);
